@@ -1,14 +1,14 @@
 export const personalInfo = {
   name: "Eduardo Costa Wiezel",
-  title: "Coordenador de TI | Desenvolvedor Fullstack | Especialista em IA",
+  title: "Coordenador de TI | Desenvolvedor Fullstack | Entusiasta de IAs",
   location: "Santa Rosa de Viterbo, SP",
-  age: null, // Para ser preenchido
+  age: 34, // Para ser preenchido
   photo: "/src/assets/images/eduardo-photo.jpg", // Placeholder para foto
   contacts: {
     website: "https://www.tesseratointegra.com.br",
     linkedin: "https://www.linkedin.com/in/eduardo-costa-wiezel-aa39151bb/",
     github: "https://github.com/EduardoWiezel0801",
-    email: null // Para ser preenchido se necessário
+    email: "eduardocostawiezel@gmail.com" // Para ser preenchido se necessário
   }
 };
 
@@ -38,6 +38,7 @@ export const experiences = [
       "Supervisão de sistemas para mais de 6.000 pontos de venda"
     ]
   },
+  
   {
     id: 2,
     title: "Desenvolvedor Fullstack",

@@ -1,5 +1,7 @@
 import { MapPin, Globe, Linkedin, Github, Calendar } from 'lucide-react';
 import { personalInfo } from '../../../data/curriculumData';
+// ✅ ADICIONAR: Import da foto
+import eduardoPhoto from '../../../assets/images/eduardo-photo.jpg';
 import './Header.css';
 
 const Header = () => {
@@ -9,20 +11,16 @@ const Header = () => {
       <div className="header-content">
         <div className="photo-section">
           <div className="photo-container">
-            {personalInfo.photo ? (
-              <img 
-                src={personalInfo.photo} 
-                alt={personalInfo.name}
-                className="profile-photo"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-            ) : null}
-            <div className="photo-placeholder">
-              <span>Adicionar<br />Foto Aqui</span>
-            </div>
+            {/* ✅ CORRIGIDO: Usar eduardoPhoto em vez de personalInfo.photo */}
+            <img 
+              src={eduardoPhoto} 
+              alt={personalInfo.name}
+              className="profile-photo"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
           </div>
         </div>
         
