@@ -1,0 +1,132 @@
+.summary-section {
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3498db;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #e74c3c;
+}
+
+.summary-content {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  margin-bottom: 1.5rem;
+}
+
+.summary-paragraph {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+  text-align: justify;
+  margin-bottom: 1rem;
+}
+
+.summary-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.ai-highlight {
+  background: linear-gradient(120deg, #a8e6cf 0%, #dcedc1 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #27ae60;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.ai-highlight:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
+}
+
+.ai-icon {
+  background: #27ae60;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-content {
+  flex: 1;
+}
+
+.ai-title {
+  color: #27ae60;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.ai-description {
+  color: #2c3e50;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .summary-section {
+    padding: 1.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .summary-content {
+    padding: 1.25rem;
+  }
+
+  .summary-paragraph {
+    font-size: 1rem;
+  }
+
+  .ai-highlight {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ai-icon {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-content {
+    padding: 1rem;
+  }
+
+  .ai-highlight {
+    padding: 1.25rem;
+  }
+
+  .ai-title {
+    font-size: 1rem;
+  }
+
+  .ai-description {
+    font-size: 0.95rem;
+  }
+}

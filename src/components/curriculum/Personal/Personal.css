@@ -1,0 +1,167 @@
+.personal-section {
+  padding: 2rem 0;
+}
+
+.personal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.interests-card,
+.objective-card {
+  border-radius: 12px;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.interests-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.objective-card {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.interests-card:hover,
+.objective-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.interests-card::before,
+.objective-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  animation: rotate 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-header svg {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.interests-card:hover .card-header svg,
+.objective-card:hover .card-header svg {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.card-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  font-weight: 300;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  margin: 0;
+}
+
+/* Efeitos especiais */
+.interests-card::after {
+  content: '🏃‍♂️💪';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.objective-card::after {
+  content: '🎯🚀';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .personal-section {
+    padding: 1.5rem 0;
+  }
+
+  .personal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .interests-card,
+  .objective-card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .card-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interests-card,
+  .objective-card {
+    padding: 1.25rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .card-header {
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .interests-card::after,
+  .objective-card::after {
+    font-size: 1.25rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
