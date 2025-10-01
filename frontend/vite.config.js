@@ -5,11 +5,16 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),tailwindcss()],
+  plugins: [react(), tailwindcss()],
   base: '/curriculo-eduardo/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    hmr: {
+      clientPort: 5173,
     },
   },
   build: {
