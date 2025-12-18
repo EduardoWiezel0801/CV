@@ -35,6 +35,7 @@ class Summary(models.Model):
 class Experience(models.Model):
     title = models.CharField(max_length=200, verbose_name="Cargo")
     company = models.CharField(max_length=200, verbose_name="Empresa")
+    company_logo = models.ImageField(upload_to='companies/', verbose_name="Logo da Empresa", null=True, blank=True)
     company_url = models.URLField(verbose_name="URL da Empresa", blank=True)
     period = models.CharField(max_length=100, verbose_name="Período")
     location = models.CharField(max_length=200, verbose_name="Localização")
@@ -80,6 +81,9 @@ class Project(models.Model):
     title = models.CharField(max_length=200, verbose_name="Título")
     tech = models.CharField(max_length=200, verbose_name="Tecnologias")
     description = models.TextField(verbose_name="Descrição")
+    image = models.ImageField(upload_to='projects/', verbose_name="Imagem", null=True, blank=True)
+    url = models.URLField(verbose_name="URL do Projeto", blank=True)
+    github_url = models.URLField(verbose_name="GitHub", blank=True)
     highlight = models.BooleanField(default=False, verbose_name="Projeto de Destaque")
     order = models.IntegerField(default=0, verbose_name="Ordem")
     
