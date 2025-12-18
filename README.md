@@ -292,9 +292,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ---
 
-## 📞 Suporte
 
-Para suporte, envie um email para eduardo@tesseratointegra.com.br ou abra uma issue no GitHub.
 
 ---
 
@@ -311,4 +309,3 @@ Para suporte, envie um email para eduardo@tesseratointegra.com.br ou abra uma is
 
 ---
 
-**Feito com ❤️ por Eduardo Wiezel**
