@@ -3,22 +3,22 @@ import api from './api';
 export const skillService = {
   getAll: async () => {
     const response = await api.get('/skills/');
-    return response.data.results;
+    return response.data.results || response.data || [];
   },
 
   getByCategory: async () => {
     const response = await api.get('/skills/by_category/');
-    return response.data;
+    return response.data || {};
   },
 
   create: async (data) => {
     const response = await api.post('/skills/', data);
-    return response.data;
+    return response.data || {};
   },
 
   update: async (id, data) => {
     const response = await api.put(`/skills/${id}/`, data);
-    return response.data;
+    return response.data || {};
   },
 
   delete: async (id) => {

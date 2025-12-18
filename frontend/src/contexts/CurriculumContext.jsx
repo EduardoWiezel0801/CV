@@ -29,7 +29,12 @@ export function CurriculumProvider({ children }) {
       setSkills(skillsData);
       setProjects(projectsData);
     } catch (err) {
-      setError(err.message);
+      const errorMessage = err.response?.data?.message || 
+                           err.response?.data?.detail ||
+                           err.message || 
+                           'Erro ao carregar dados do currículo';
+      setError(errorMessage);
+      console.error('Error fetching curriculum data:', err);
     } finally {
       setLoading(false);
     }

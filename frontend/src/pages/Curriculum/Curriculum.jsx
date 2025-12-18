@@ -6,8 +6,8 @@ import Skills from './sections/Skills';
 import Projects from './sections/Projects';
 import Education from './sections/Education';
 import Personal from './sections/Personal';
-import LoadingSpinner from '../../components/shared/LoadingSpinner.jsx';
-import ErrorMessage from '../../components/shared/ErrorMessage.jsx';
+import LoadingSpinner from '@/components/shared/LoadingSpinner';
+import ErrorMessage from '@/components/shared/ErrorMessage';
 
 export default function Curriculum() {
   const { loading, error } = useCurriculum();

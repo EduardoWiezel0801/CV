@@ -3,7 +3,7 @@ import api from './api';
 export const experienceService = {
   getAll: async () => {
     const response = await api.get('/experiences/');
-    return response.data.results;
+    return response.data.results || response.data || [];
   },
 
   getById: async (id) => {
