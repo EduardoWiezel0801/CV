@@ -31,7 +31,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',  # Desabilitado para desenvolvimento
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -103,8 +103,8 @@ CORS_ALLOW_HEADERS = [
 
 # CSRF Settings
 CSRF_TRUSTED_ORIGINS = [
-    'https://5173-iswy028ike62w3ho5p8xn-6254e393.manusvm.computer',
-    'https://8000-iswy028ike62w3ho5p8xn-6254e393.manusvm.computer',
+    'https://5173-iabjtcksge8f6uvff2mvv-9b9bc285.manusvm.computer',
+    'https://8000-iabjtcksge8f6uvff2mvv-9b9bc285.manusvm.computer',
 ]
 CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = True

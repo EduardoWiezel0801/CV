@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, User, LogIn } from 'lucide-react';
-import { authService } from '../../services/authService';
+import { useAuth } from '../../contexts/AuthContext';
 import BackButton from '../../components/shared/BackButton';
 
 export default function Login() {
@@ -10,6 +10,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,8 +18,12 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await authService.login(username, password);
-      navigate('/admin');
+      const success = await login(username, password);
+      if (success) {
+        navigate('/admin');
+      } else {
+        setError('Erro ao fazer login. Verifique suas credenciais.');
+      }
     } catch (err) {
       setError(err.response?.data?.error || 'Erro ao fazer login. Verifique suas credenciais.');
     } finally {

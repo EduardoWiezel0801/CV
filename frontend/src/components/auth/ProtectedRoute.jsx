@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import { authService } from '../../services/authService';
+import { useAuth } from '../../contexts/AuthContext';
 import LoadingSpinner from '../shared/LoadingSpinner';
 
 export default function ProtectedRoute({ children }) {
-  const [loading, setLoading] = useState(true);
-  const [authenticated, setAuthenticated] = useState(false);
+  const { authenticated, loading, checkAuth } = useAuth();
+  const [checking, setChecking] = React.useState(true);
 
   useEffect(() => {
-    checkAuthentication();
+    const verifyAuth = async () => {
+      // Verificar localStorage primeiro
+      const isAuth = localStorage.getItem('isAuthenticated') === 'true';
+      
+      if (isAuth && !authenticated) {
+        // Se tem no localStorage mas não no estado, reverificar
+        await checkAuth();
+      }
+      setChecking(false);
+    };
+    
+    verifyAuth();
   }, []);
 
-  const checkAuthentication = async () => {
-    try {
-      const result = await authService.checkAuth();
-      setAuthenticated(result.authenticated);
-    } catch (error) {
-      setAuthenticated(false);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
+  if (loading || checking) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <LoadingSpinner size="lg" />
@@ -30,7 +30,10 @@ export default function ProtectedRoute({ children }) {
     );
   }
 
-  if (!authenticated) {
+  // Verificar localStorage como fallback
+  const isAuthInStorage = localStorage.getItem('isAuthenticated') === 'true';
+  
+  if (!authenticated && !isAuthInStorage) {
     return <Navigate to="/login" replace />;
   }
 

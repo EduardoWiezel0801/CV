@@ -22,10 +22,38 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Importante para enviar cookies
+  withCredentials: true,
 });
 
-// Interceptor removido - CSRF desabilitado para desenvolvimento
+// Interceptor para adicionar CSRF token
+api.interceptors.request.use(
+  async (config) => {
+    // Para métodos que precisam de CSRF token
+    if (['post', 'put', 'patch', 'delete'].includes(config.method)) {
+      const csrfToken = getCookie('csrftoken');
+      if (csrfToken) {
+        config.headers['X-CSRFToken'] = csrfToken;
+      } else {
+        // Se não tiver token, busca do servidor
+        try {
+          const response = await axios.get(`${import.meta.env.VITE_API_URL}/csrf/`, {
+            withCredentials: true
+          });
+          const token = response.data.csrfToken;
+          if (token) {
+            config.headers['X-CSRFToken'] = token;
+          }
+        } catch (error) {
+          console.warn('Não foi possível obter CSRF token:', error);
+        }
+      }
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 api.interceptors.response.use(
   (response) => response,
