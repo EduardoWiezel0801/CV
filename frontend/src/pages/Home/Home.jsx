@@ -123,7 +123,7 @@ export default function Home() {
             </Link>
             
             <Link
-              to="/login"
+              to="/admin"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-indigo-600 text-indigo-600 text-lg font-semibold rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-indigo-50"
             >
               <Settings className="w-5 h-5" />

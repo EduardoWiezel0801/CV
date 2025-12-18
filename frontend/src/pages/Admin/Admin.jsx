@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   User, Briefcase, Code, FileText, GraduationCap, 
   Plus, Edit, Trash2, Image as ImageIcon, Home, LogOut 
 } from 'lucide-react';
-import { authService } from '../../services/authService';
+import { useAuth } from '../../contexts/AuthContext';
 import { personalInfoService } from '../../services/personalInfoService';
 import { experienceService } from '../../services/experienceService';
 import { skillService } from '../../services/skillService';
@@ -17,6 +17,7 @@ import PersonalInfoModal from '../../components/admin/PersonalInfoModal';
 
 export default function Admin() {
   const navigate = useNavigate();
+  const { logout } = useAuth();
   const [personalInfo, setPersonalInfo] = useState(null);
   const [showPersonalInfoModal, setShowPersonalInfoModal] = useState(false);
   const [experiences, setExperiences] = useState([]);
@@ -31,7 +32,7 @@ export default function Admin() {
 
   const handleLogout = async () => {
     try {
-      await authService.logout();
+      await logout();
       navigate('/login');
     } catch (error) {
       console.error('Error logging out:', error);

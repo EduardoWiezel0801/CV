@@ -8,7 +8,6 @@ from rest_framework import status
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-@csrf_exempt
 def login_view(request):
     """Login endpoint"""
     username = request.data.get('username')
